@@ -230,7 +230,14 @@ export const achievements: Achievement[] = [
  * Photos: put originals in photos/stage/<file>.jpg and run `npm run stage-photos`
  * (writes public/assets/stage/<file>-{800,1600}.{avif,webp}), then list them below by `file`.
  */
-export type StagePhoto = { file: string; alt: string; /** CSS object-position, keeps faces in frame */ focus?: string };
+export type StagePhoto = {
+  file: string;
+  alt: string;
+  /** one line shown under the photo in the album */
+  caption?: string;
+  /** CSS object-position, keeps faces in frame */
+  focus?: string;
+};
 export type StageDay = { label: string; date: string; title: string; caption: string; photos?: StagePhoto[] };
 export type StageMoment = {
   id: string;
@@ -249,6 +256,7 @@ export type StageMoment = {
 const GROUP_PHOTO: StagePhoto = {
   file: 'delhi-next-group',
   alt: 'Group photo of the Delhi Next student innovators at the Delhi Secretariat, in front of the Delhi Next screen',
+  caption: 'Group photo at the Delhi Secretariat',
   focus: '50% 60%',
 };
 
@@ -267,9 +275,17 @@ export const stageMoments: StageMoment[] = [
       {
         label: 'Day 1',
         date: 'Wed, 1 July',
-        title: 'Ideas & demos',
+        title: 'Keynote & demos',
         caption:
-          'Opening session at Dr. Ambedkar International Centre, Janpath — a keynote on civic tech (how UPI, Jan Dhan and Aadhaar changed millions of lives), introductions, idea presentations and project demos, then the briefing for the Chief Minister meeting.',
+          "Opened with Shri Vishnu Mittal's session on civic tech — how UPI, Jan Dhan and Aadhaar changed millions of lives — followed by introductions, idea presentations and project demos. Then on to the MCD Civic Centre for the briefing ahead of the Chief Minister meeting.",
+        photos: [
+          { file: 'day1-session', alt: 'Student innovators seated around a long conference table with laptops', caption: 'The morning session with fellow innovators' },
+          { file: 'day1-vishnu-mittal', alt: 'Shri Vishnu Mittal speaking at the head of the conference table', caption: 'Shri Vishnu Mittal on civic tech' },
+          { file: 'day1-presentations', alt: 'Innovators watching a project presentation on the screens of a long conference hall', caption: 'Idea presentations on the big screen' },
+          { file: 'day1-demo', alt: 'A project dashboard demoed on a large wall screen', caption: 'Project demo' },
+          { file: 'day1-team', alt: 'Four team members standing in front of their project on a large screen', caption: 'The team after the demo' },
+          { file: 'day1-mcd', alt: 'Innovators seated in the council chamber at the MCD Civic Centre', caption: 'At the MCD Civic Centre for the briefing' },
+        ],
       },
       {
         label: 'Day 2',

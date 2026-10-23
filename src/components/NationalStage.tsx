@@ -217,6 +217,9 @@ function Lightbox({ slides, index, onIndex, onClose }: { slides: Slide[]; index:
   const slide = slides[index];
   const m = stageMoments[slide.moment];
   const day: StageDay | undefined = slide.day !== undefined ? m.days?.[slide.day] : undefined;
+  // position within this day (or this event when it has no days)
+  const group = slides.filter((s) => s.moment === slide.moment && s.day === slide.day);
+  const pos = group.indexOf(slide) + 1;
   const go = useCallback((d: number) => onIndex((index + d + n) % n), [index, n, onIndex]);
 
   useEffect(() => {
@@ -245,7 +248,8 @@ function Lightbox({ slides, index, onIndex, onClose }: { slides: Slide[]; index:
       <div className="gutter flex h-16 shrink-0 items-center justify-between pt-[env(safe-area-inset-top)]">
         <p className="text-[11px] font-bold tracking-[0.3em] text-mist">
           STILL {String(slide.moment + 1).padStart(2, '0')}
-          {day ? ` · ${day.label.toUpperCase()}` : ''} — {index + 1} / {n}
+          {day ? ` · ${day.label.toUpperCase()}` : ''}
+          {group.length > 1 ? ` — ${pos} / ${group.length}` : ''}
         </p>
         <button type="button" onClick={onClose} aria-label="Close" className="glass flex h-10 w-10 items-center justify-center rounded-full text-bone">
           ✕
@@ -284,6 +288,12 @@ function Lightbox({ slides, index, onIndex, onClose }: { slides: Slide[]; index:
       </div>
 
       <div className="gutter shrink-0 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 text-center" onClick={(e) => e.stopPropagation()}>
+        {slide.photo?.caption && (
+          <p className="mb-3 flex items-center justify-center gap-2 text-sm font-semibold text-bone">
+            <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-crimson-2" />
+            {slide.photo.caption}
+          </p>
+        )}
         {m.days && m.days.length > 0 && (
           <div className="-mx-1 mb-3 flex justify-center gap-2 overflow-x-auto px-1" role="tablist" aria-label="Days">
             {m.days.map((d, di) => (
