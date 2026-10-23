@@ -83,21 +83,6 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
           animate={{ clipPath: 'inset(-40% -40% -10% -40%)', opacity: 1, transitionEnd: { clipPath: 'none' } }}
           transition={{ duration: 1.6, ease: EASE, delay: 0.1 }}
         >
-          {/* frosted glass lens behind the portrait — the head rises out of its top edge */}
-          <div
-            aria-hidden
-            className="glass-panel no-backdrop absolute left-1/2 top-[6%] aspect-square h-[74%] -translate-x-1/2 rounded-full !bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.10),rgba(255,255,255,0.03)_55%,rgba(229,19,43,0.10))]"
-          >
-            <span className="absolute inset-[7%] rounded-full border border-white/[0.07]" />
-            <span className="absolute left-[14%] top-[9%] h-[22%] w-[38%] -rotate-[28deg] rounded-[50%] bg-[radial-gradient(closest-side,rgba(255,255,255,0.2),transparent)]" />
-          </div>
-          {/* rotating rim-light ring */}
-          <div
-            aria-hidden
-            className="absolute left-1/2 top-[6%] aspect-square h-[74%] -translate-x-1/2 rounded-full motion-safe:animate-[spin-x_14s_linear_infinite] p-px [background:conic-gradient(from_0deg,transparent_0deg,rgba(255,61,90,0.9)_60deg,transparent_140deg,rgba(185,139,255,0.6)_220deg,transparent_300deg)] [mask:radial-gradient(farthest-side,transparent_calc(100%-2px),#000_calc(100%-1px))]"
-          />
-          <div aria-hidden className="absolute left-1/2 top-[6%] aspect-square h-[74%] -translate-x-1/2 rounded-full shadow-[0_0_140px_rgba(229,19,43,0.32),inset_0_0_90px_rgba(229,19,43,0.16)]" />
-
           {/* the photo — slow idle float on top of scroll + pointer parallax */}
           <div className="absolute inset-0 motion-safe:animate-[float_6s_ease-in-out_infinite]">
             <LivePortrait
