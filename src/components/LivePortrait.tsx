@@ -16,7 +16,8 @@ import { livePortrait as LP } from '../data/livePortrait';
  * - the head moves on a critically damped spring (natural acceleration, no overshoot) and,
  *   while moving fast, cross-fades neighbouring frames; at rest it settles on one crisp frame;
  * - no filters over the changing canvas; the bottom fade is one static mask on the whole box.
- * On touch screens (no cursor) the head drifts slowly on its own.
+ * Without a cursor (touch screens, or a resting mouse) the head glances around on its own,
+ * holding each glance on one sharp frame.
  */
 
 type Props = {
@@ -218,6 +219,7 @@ export default function LivePortrait({ className = '', follow = true, alt, fallb
     let lastPointer = -1e9;
     let dirty = true;
     let last = performance.now();
+    const idle = { y: CY, p: CP, until: 0 };
 
     function plan() {
       // what to decode at full size, most important first: where the head is going, where it is,
@@ -264,7 +266,7 @@ export default function LivePortrait({ className = '', follow = true, alt, fallb
     }
 
     // test hook: a test page can define window.__lpStats to count draws and missing-frame fallbacks
-    const stats = (window as unknown as { __lpStats?: { draws: number; miss: number } }).__lpStats;
+    const stats = (window as unknown as { __lpStats?: { draws: number; miss: number; moving?: boolean } }).__lpStats;
 
     function draw() {
       if (stats) stats.draws++;
@@ -322,21 +324,27 @@ export default function LivePortrait({ className = '', follow = true, alt, fallb
       last = now;
       const following = fine && now - lastPointer < 4000;
       if (!following) {
-        // idle: look around slowly, pausing on real frames
-        const t = now / 1000;
-        pose.ty = Math.round(CY + CY * (0.6 * Math.sin(t * 0.33) + 0.22 * Math.sin(t * 0.71 + 1.3)));
-        pose.tp = fine ? Math.round(CP + CP * 0.5 * Math.sin(t * 0.27 + 0.6)) : CP;
+        // idle, like a person: hold a glance for 2–4.5 s (on one crisp frame), then look somewhere else
+        if (now > idle.until) {
+          const back = Math.random() < 0.3;
+          idle.y = back ? CY : Math.round(CY + (Math.random() * 2 - 1) * CY * 0.7);
+          idle.p = !fine || back ? CP : Math.round(CP + (Math.random() * 2 - 1) * CP * 0.6);
+          idle.until = now + 2000 + Math.random() * 2500;
+        }
+        pose.ty = idle.y;
+        pose.tp = idle.p;
       } else if (now - lastPointer > 140) {
         // the cursor has stopped: settle on the nearest real frame
         pose.ty = Math.round(pose.ty);
         pose.tp = Math.round(pose.tp);
       }
-      const w = following ? 15 : 5.5; // spring stiffness (rad/s)
+      const w = following ? 15 : 8; // spring stiffness (rad/s): idle glances are quick, then hold still
       const step = (x: number, v: number, t: number) => {
         v += (w * w * (t - x) - 2 * w * v) * dt;
         return [x + v * dt, v];
       };
       const moving = Math.abs(pose.ty - pose.y) > 0.002 || Math.abs(pose.tp - pose.p) > 0.002 || Math.abs(pose.vy) > 0.01 || Math.abs(pose.vp) > 0.01;
+      if (stats) stats.moving = moving || eyeMix > 0;
       if (moving) {
         [pose.y, pose.vy] = step(pose.y, pose.vy, pose.ty);
         [pose.p, pose.vp] = step(pose.p, pose.vp, pose.tp);

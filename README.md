@@ -1,22 +1,68 @@
+<div align="center">
+
 # SHUBHAM — THE SERIES
 
-A cinematic, streaming-inspired portfolio for **Shubham Mohapatra** — AI-Native Software Engineer & Full-Stack Builder.
-Every section is an episode, every project is an Original.
+**Shubham Mohapatra · AI-Native Software Engineer & Full-Stack Builder**
 
-Sections: Hero (headline, CTAs, quick links, animated portrait + live terminal) · About · Featured Projects · Experience timeline · Technical Skills grid · Achievements · Journey · Top Picks · Resume · Contact (copy-to-clipboard email).
+A cinematic, glassmorphic portfolio. Every section is an episode, every project is an Original,
+and the portrait is alive: the head turns toward your cursor and the eyes blink.
 
-> A personal portfolio with a fictional streaming-platform look. It is not affiliated with Netflix or any other streaming service and uses none of their logos.
+![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white&labelColor=1a1a1a)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178c6?logo=typescript&logoColor=white&labelColor=1a1a1a)
+![Vite](https://img.shields.io/badge/Vite-6-646cff?logo=vite&logoColor=white&labelColor=1a1a1a)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?logo=tailwindcss&logoColor=white&labelColor=1a1a1a)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-11-ff0055?logo=framer&logoColor=white&labelColor=1a1a1a)
 
-## Before you publish — fill these in
+</div>
 
-All in [`src/data/portfolio.ts`](src/data/portfolio.ts):
+![Hero — headline, calls to action and the live portrait](docs/screenshots/hero.jpg)
 
-- `profile.links` — real GitHub, LinkedIn and X URLs (and `profile.githubLabel`)
-- `projects` — the three Originals are drafts built from the brief; swap in real titles, bullets, `github` and `live` links (the Live Demo button appears once `live` is set)
-- `experience[].period` — real dates, and add numbers to the bullets where you have them
-- `certifications` — the rail appears once the list has items
+## The live portrait
 
-Replace `public/assets/Shubham_Mohapatra_Resume.pdf` with the real resume.
+<table>
+<tr>
+<td width="44%"><img src="docs/live-portrait.gif" alt="The portrait turning its head left, right, up and down, and blinking" width="100%"></td>
+<td>
+
+The hero photo is not a video. It is **170 pre-rendered frames** of one photo — 17 head turns ×
+5 head tilts × eyes open/closed — made with the open LivePortrait face model.
+
+- **Follows the cursor** left, right, up and down on a spring, so it eases in and settles naturally
+- **Blinks** every few seconds, sometimes twice, like a real person
+- **Glances around on its own** on phones and when the mouse is resting
+- **Smooth at any speed:** frames are decoded off the main thread and every pose has a frame
+  ready, so fast flicks never stutter
+- **Light:** AVIF frames (~22 KB each, WebP fallback); phones download only what they use
+
+</td>
+</tr>
+</table>
+
+## Sections
+
+| | |
+| :---: | :---: |
+| ![About](docs/screenshots/about.jpg) | ![Featured projects](docs/screenshots/projects.jpg) |
+| **About** — background and highlights | **Featured Projects** — pitch, stack, architecture, links |
+| ![Experience](docs/screenshots/experience.jpg) | ![Technical skills](docs/screenshots/skills.jpg) |
+| **Experience** — a timeline that draws itself as you scroll | **Technical Skills** — grouped, with where each one was used |
+| ![Achievements](docs/screenshots/achievements.jpg) | ![Journey](docs/screenshots/journey.jpg) |
+| **Achievements** | **My Journey** — the story as seasons and episodes |
+| ![Resume](docs/screenshots/resume.jpg) | ![Contact](docs/screenshots/contact.jpg) |
+| **The Full Story** — resume sheet, view and download | **Contact** — copy-to-clipboard email and socials |
+
+## On a phone
+
+![Hero, experience, skills and contact on a phone](docs/screenshots/mobile.jpg)
+
+## Design
+
+- **Glassmorphism:** frosted panels with a light edge and a soft sheen, over a slowly drifting
+  aurora of crimson, violet and blue that the glass refracts
+- **Crisp text:** nothing at rest is blurred, scaled or 3D-transformed, so type renders natively
+- **Motion with restraint:** one opening sequence, scroll reveals, a custom cursor, magnetic buttons,
+  card tilt with glare on hover — all switched off for visitors who prefer reduced motion
+- **Viewer profiles:** "Who's watching?" — Recruiter, Developer or Creative — reorders the sections
 
 ## Run it locally
 
@@ -24,10 +70,8 @@ Requires **Node.js 18+**.
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:5173
 ```
-
-Open the URL Vite prints (usually http://localhost:5173).
 
 Production build:
 
@@ -36,73 +80,60 @@ npm run build
 npm run preview
 ```
 
-The static site is written to `dist/` and can be deployed as-is to Vercel, Netlify, GitHub Pages or any static host.
+The static site is written to `dist/` and deploys as-is to Vercel, Netlify, GitHub Pages or any
+static host.
 
 ## Updating the content
 
-**All content lives in one file: [`src/data/portfolio.ts`](src/data/portfolio.ts).** It was generated from the resume, and every component reads from it.
+**All content lives in one file: [`src/data/portfolio.ts`](src/data/portfolio.ts).** Every
+component reads from it.
 
 | To change… | Edit |
 | --- | --- |
-| Name, intro, email, LinkedIn, GitHub | `profile` |
-| A project, or a new one | `projects` (add an object; it appears in Originals, the overlay, the resume sheet and the counts) |
+| Name, headline, intro, email, LinkedIn, GitHub, X | `profile` |
+| Projects (Live Demo appears once `live` is set) | `projects` |
+| Jobs and internships | `experience` |
+| Skills and "where it's used" notes | `skillCategories`, `skillEvidence` |
 | Achievements / certifications | `achievements`, `certifications` |
-| Skills and their "where it's used" notes | `skillCategories`, `skillEvidence` |
 | Seasons and episodes (My Journey) | `seasons` |
 | Top 10 row | `topPicks` |
 | ▶ Play Intro highlight reel | `introSlides` |
-| Profile order (Recruiter / Developer / Creative) | `viewerProfiles` |
-| Opening studio card text | `profile.originalLabel` |
+| Section order per viewer profile | `viewerProfiles` |
 
-**Resume:** replace `public/assets/Shubham_Mohapatra_Resume.pdf`.
+- **Resume:** replace `public/assets/Shubham_Mohapatra_Resume.pdf`.
+- **Static portrait:** replace `pic.png` (a transparent PNG), then run `npm run images`.
+- **Live portrait frames:** see [`scripts/live-portrait/README.md`](scripts/live-portrait/README.md).
 
-**Photo:** replace `pic.png` (a background-removed, transparent PNG of the portrait), then run:
-
-```bash
-npm run images
-```
-
-This rebuilds the responsive WebP portraits and the social share image in `public/assets/`.
-
-## What's inside
+## Project structure
 
 ```
 src/
-  data/portfolio.ts        ← single source of truth (from the resume)
-  App.tsx                  ← stages: opening → profile select → home; overlays
+  data/portfolio.ts          single source of truth for all content
+  data/livePortrait.ts       frame grid for the live portrait
+  App.tsx                    opening → profile select → home; overlays
   components/
-    OpeningSequence        ← black → studio card → SHUBHAM → THE SERIES → portrait → ▶ PLAY
-    ProfileSelector        ← "Who's watching?" (changes section order only)
-    Navbar                 ← hide-on-scroll nav, profile switcher, mobile menu
-    Hero                   ← billboard: parallax portrait, particles, light streaks, floating chips
-    PlayIntro              ← ▶ Play Intro: zoom into portrait → highlight reel (pause, ← →, tap zones)
-    ContinueWatching       ← cards with real "watched" progress bars
-    About                  ← The Pilot
-    Seasons / EpisodeCard  ← My Journey as seasons and episodes
-    Originals / ProjectCard← pinned horizontal sequence on desktop, swipe rail on touch
-    ProjectModal           ← full-screen project overlay with a shared-element transition
-    TopPicks               ← Top 10-style row
-    Skills                 ← skill genres; each card shows where the skill appears
-    Achievements           ← award-poster cards + certification rail (links to credentials)
-    ResumeViewer/ResumeModal ← designed resume sheet, PDF viewer, download
-    FinalCTA               ← TO BE CONTINUED… + contact links
-    CustomCursor, fx.tsx   ← cursor states, magnetic buttons, 3D tilt, text reveals, particles
-  hooks/                   ← Lenis smooth scroll + scroll lock, media queries, watch progress
-scripts/build-images.mjs   ← portrait/share-image pipeline (sharp)
+    Hero                     headline, CTAs, quick links, live portrait, terminal card
+    LivePortrait             canvas portrait: cursor follow, blink, off-thread decoding
+    About · Experience       pilot story · scroll-drawn timeline
+    Originals · ProjectCard  featured projects (pinned on desktop, swipe on touch)
+    ProjectModal             full-screen project view
+    Skills · Achievements    glass skill grid · award cards
+    Seasons · TopPicks       journey as seasons · top 10 row
+    ResumeViewer · FinalCTA  resume sheet · contact
+    fx.tsx                   magnetic buttons, hover tilt + glare, text reveals, particles
+  hooks/                     smooth scroll, media queries, watch progress
+public/assets/live/          live portrait frames (AVIF + WebP)
+scripts/                     image and live-portrait pipelines
+docs/                        README screenshots and GIF
 ```
-
-**Stack:** React 18, TypeScript, Vite 6, Tailwind CSS 4, Framer Motion 11, Lenis.
 
 ## Accessibility and performance
 
-- `prefers-reduced-motion` is respected: smooth scroll, the custom cursor, tilt, particles, grain and the pinned horizontal scroll turn off, and the opening jumps straight to its final frame.
-- Hover effects only run on devices with a precise pointer. Touch devices get tap interactions and native swipe rails.
-- The custom cursor appears only with a mouse or trackpad.
-- Overlays close with Esc, and the highlight reel supports Space and the ← → keys.
-- Portraits are responsive WebP files (25–90 KB). Overlays are code-split, and particles pause when they're off screen.
+- `prefers-reduced-motion` turns off smooth scroll, the live portrait (a still photo is shown), tilt and
+  particles, and stops the aurora drifting.
+- Hover effects run only with a precise pointer; touch devices get taps and swipe rails.
+- Overlays close with Esc; the highlight reel supports Space and ← →.
+- Overlays are code-split; particles and the live portrait pause when off screen.
 
-## Keyboard shortcuts
-
-- **Opening:** Enter or Esc skips it.
-- **Play Intro:** Space pauses, ← and → change slides, Esc closes.
-- **Project and resume overlays:** Esc closes.
+> A personal portfolio with a fictional streaming-platform look. It is not affiliated with Netflix or
+> any other streaming service and uses none of their logos.
