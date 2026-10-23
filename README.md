@@ -38,6 +38,14 @@ The hero photo is not a video. It is **170 pre-rendered frames** of one photo �
 </tr>
 </table>
 
+## On the National Stage
+
+![On the National Stage — Delhi Next group photo with a day-by-day album](docs/screenshots/stage.jpg)
+
+Event photos as episode stills: Delhi Next (Delhi 2.0 Summer Camp and the Chief Minister meeting),
+India Innovates 2026 at Bharat Mandapam, and the Chakravyuh National Hackathon. A multi-day event opens
+as a day-by-day album; a day without a photo shows a title card instead of an empty frame.
+
 ## Sections
 
 | | |
@@ -95,6 +103,7 @@ component reads from it.
 | Jobs and internships | `experience` |
 | Skills and "where it's used" notes | `skillCategories`, `skillEvidence` |
 | Achievements / certifications | `achievements`, `certifications` |
+| Event photos and captions (On the National Stage) | `stageMoments` |
 | Seasons and episodes (My Journey) | `seasons` |
 | Top 10 row | `topPicks` |
 | ▶ Play Intro highlight reel | `introSlides` |
@@ -102,6 +111,8 @@ component reads from it.
 
 - **Resume:** replace `public/assets/Shubham_Mohapatra_Resume.pdf`.
 - **Static portrait:** replace `pic.png` (a transparent PNG), then run `npm run images`.
+- **Event photos:** put originals in `photos/stage/`, run `npm run stage-photos`, then list them in
+  `stageMoments` by file name (as a cover, or under a day).
 - **Live portrait frames:** see [`scripts/live-portrait/README.md`](scripts/live-portrait/README.md).
 
 ## Project structure
@@ -118,11 +129,13 @@ src/
     Originals · ProjectCard  featured projects (pinned on desktop, swipe on touch)
     ProjectModal             full-screen project view
     Skills · Achievements    glass skill grid · award cards
+    NationalStage            event stills and day-by-day photo album
     Seasons · TopPicks       journey as seasons · top 10 row
     ResumeViewer · FinalCTA  resume sheet · contact
     fx.tsx                   magnetic buttons, hover tilt + glare, text reveals, particles
   hooks/                     smooth scroll, media queries, watch progress
 public/assets/live/          live portrait frames (AVIF + WebP)
+public/assets/stage/         event photos (AVIF + WebP, built from photos/stage/)
 scripts/                     image and live-portrait pipelines
 docs/                        README screenshots and GIF
 ```
