@@ -32,7 +32,7 @@ export const profile = {
     'I like short loops: sketch the idea, ship the first version fast, then harden it for production.',
   ],
   highlights: [
-    { title: 'Hackathon winner', detail: 'Won a DRDO co-partnered hackathon and competed at national-level events.' },
+    { title: 'Hackathon winner', detail: 'Won a DRDO co-partnered hackathon and reached the India Innovates 2026 national finals at Bharat Mandapam.' },
     { title: 'Fast shipper', detail: 'Takes ideas from a blank repo to a production deployment.' },
     { title: 'AI-native by default', detail: 'Agents, function calling and vector search are part of the everyday toolkit.' },
   ],
@@ -210,18 +210,100 @@ export const achievements: Achievement[] = [
     laurel: 'Winner',
   },
   {
-    id: 'national-events',
-    title: 'National Stage',
-    org: 'National-level hackathons',
-    detail: 'Competed at national-level hackathons and engineering events.',
-    laurel: 'National Level',
+    id: 'india-innovates',
+    title: 'National Finalist',
+    org: 'India Innovates 2026',
+    detail: 'Top 5,000 teams out of 1 crore+ participants; pitched at Bharat Mandapam, New Delhi (March 2026).',
+    laurel: 'Top 5,000',
   },
   {
-    id: 'fast-shipper',
-    title: 'Idea → Production',
-    org: 'Fast shipper mindset',
-    detail: 'Takes products from a blank repo to a production deployment, quickly.',
-    laurel: 'Builder',
+    id: 'chakravyuh',
+    title: '36-Hour Build',
+    org: 'Chakravyuh National Hackathon',
+    detail: 'Built, debugged and deployed a working end-to-end prototype in one non-stop 36-hour sprint (January 2026).',
+    laurel: 'National Hackathon',
+  },
+];
+
+/**
+ * "On the National Stage" — event photos with captions; a multi-day event opens as a day-by-day album.
+ * Photos: put originals in photos/stage/<file>.jpg and run `npm run stage-photos`
+ * (writes public/assets/stage/<file>-{800,1600}.{avif,webp}), then list them below by `file`.
+ */
+export type StagePhoto = { file: string; alt: string; /** CSS object-position, keeps faces in frame */ focus?: string };
+export type StageDay = { label: string; date: string; title: string; caption: string; photos?: StagePhoto[] };
+export type StageMoment = {
+  id: string;
+  event: string;
+  venue: string;
+  date: string;
+  tag: string;
+  caption: string;
+  featured?: boolean;
+  /** photo on the card (defaults to the first photo of the event) */
+  cover?: StagePhoto;
+  photos?: StagePhoto[];
+  days?: StageDay[];
+};
+
+const GROUP_PHOTO: StagePhoto = {
+  file: 'delhi-next-group',
+  alt: 'Group photo of the Delhi Next student innovators at the Delhi Secretariat, in front of the Delhi Next screen',
+  focus: '50% 60%',
+};
+
+export const stageMoments: StageMoment[] = [
+  {
+    id: 'delhi-next-2026',
+    event: 'Delhi Next — Civic-Tech Challenge',
+    venue: 'Delhi 2.0 Summer Camp, New Delhi',
+    date: '1–4 July 2026',
+    tag: 'Chief Minister meeting',
+    caption:
+      'Three days in the capital with fellow student innovators: idea presentations and project demos, a direct interaction with Delhi Chief Minister Rekha Gupta at the Delhi Secretariat, and the inaugural DelhiTech Trails tour.',
+    featured: true,
+    cover: GROUP_PHOTO,
+    days: [
+      {
+        label: 'Day 1',
+        date: 'Wed, 1 July',
+        title: 'Ideas & demos',
+        caption:
+          'Opening session at Dr. Ambedkar International Centre, Janpath — a keynote on civic tech (how UPI, Jan Dhan and Aadhaar changed millions of lives), introductions, idea presentations and project demos, then the briefing for the Chief Minister meeting.',
+      },
+      {
+        label: 'Day 2',
+        date: 'Thu, 2 July',
+        title: 'Chief Minister meeting',
+        caption:
+          'At the Delhi Secretariat: a direct interaction between the innovators and Delhi Chief Minister Rekha Gupta, with government secretaries and senior officers in the room.',
+        photos: [GROUP_PHOTO],
+      },
+      {
+        label: 'Day 3',
+        date: 'Fri, 3 July',
+        title: 'DelhiTech Trails',
+        caption:
+          "The inaugural DelhiTech Trails double-decker tour, hosted by Delhi's Tourism Minister, with 60 student innovators on board — Delhi Haat, Rashtrapati Bhavan, the National Museum, Pradhanmantri Sangrahalaya, the War Memorial and India Gate.",
+      },
+    ],
+  },
+  {
+    id: 'india-innovates-2026',
+    event: 'India Innovates 2026 — National Finals',
+    venue: 'Bharat Mandapam, New Delhi',
+    date: 'March 2026',
+    tag: 'National Finalist',
+    caption:
+      'Shortlisted among the top 5,000 teams nationwide from over 1 crore participants, and pitched our tech solution in front of national leadership and ministers.',
+  },
+  {
+    id: 'chakravyuh-2026',
+    event: 'Chakravyuh National Hackathon',
+    venue: 'GITA Autonomous College',
+    date: 'January 2026',
+    tag: '36-hour build',
+    caption: 'Built, debugged and deployed a working end-to-end prototype through an intense 36-hour non-stop sprint.',
   },
 ];
 
@@ -356,9 +438,9 @@ export const seasons: Season[] = [
   },
   {
     number: 2,
-    title: 'The Hackathon Arc',
-    period: 'National stage',
-    synopsis: 'Building against the clock — and winning.',
+    title: 'The National Stage',
+    period: '2026',
+    synopsis: 'Hackathons, national finals and a seat at the table in Delhi.',
     episodes: [
       {
         code: 'S02 E01',
@@ -370,11 +452,27 @@ export const seasons: Season[] = [
       },
       {
         code: 'S02 E02',
-        title: 'The Circuit',
-        description: 'Competed at national-level hackathons and engineering events.',
-        tags: ['National level'],
-        runtime: 'Multiple events',
+        title: 'The 36-Hour Sprint',
+        description: 'Chakravyuh National Hackathon at GITA Autonomous College — a working end-to-end prototype, built, debugged and deployed in 36 hours.',
+        tags: ['Chakravyuh', '36 hours', 'Prototype'],
+        runtime: 'January 2026',
         palette: crimson,
+      },
+      {
+        code: 'S02 E03',
+        title: 'Bharat Mandapam',
+        description: 'India Innovates 2026 national finals in New Delhi — top 5,000 of 1 crore+ participants, pitching to national leadership and ministers.',
+        tags: ['India Innovates', 'National Finals', 'New Delhi'],
+        runtime: 'March 2026',
+        palette: violet,
+      },
+      {
+        code: 'S02 E04',
+        title: 'Delhi Next',
+        description: "Delhi Next's Delhi 2.0 Summer Camp — three days in the capital with fellow student innovators, including a direct interaction with Delhi's Chief Minister at the Delhi Secretariat.",
+        tags: ['Delhi Next', 'Civic Tech', 'Chief Minister'],
+        runtime: 'July 2026',
+        palette: ocean,
       },
     ],
   },
@@ -455,7 +553,7 @@ export const topPicks: TopPick[] = [
   { label: 'Backend pick', title: 'FastAPI', detail: 'plus Node.js & Express', palette: amber },
   { label: 'Frontend pick', title: 'Next.js', detail: 'React • Tailwind CSS', palette: crimson },
   { label: 'The intern arc', title: 'Hansa AI', detail: 'Chatbots & data pipelines', palette: ocean },
-  { label: 'Mindset', title: 'Ship it', detail: 'Idea → production', palette: violet },
+  { label: 'Biggest stage', title: 'Bharat Mandapam', detail: 'India Innovates 2026 national finals', palette: violet },
   { label: 'Now open to', title: 'New Roles', detail: 'Engineering • Research • Freelance', palette: jade },
 ];
 
@@ -491,8 +589,8 @@ export const introSlides: IntroSlide[] = [
   },
   {
     kicker: 'Moments',
-    title: 'Hackathon Winner',
-    lines: ['DRDO co-partnered hackathon', 'National-level events'],
+    title: 'On the national stage',
+    lines: ['Winner — DRDO co-partnered hackathon', 'National Finalist — India Innovates 2026, Bharat Mandapam', '36-hour build — Chakravyuh National Hackathon', 'Delhi Next — meeting with Delhi’s Chief Minister'],
   },
   {
     kicker: 'Next episode',
@@ -502,7 +600,7 @@ export const introSlides: IntroSlide[] = [
 ];
 
 export type ProfileId = 'shubham' | 'recruiter' | 'developer' | 'creative';
-export type SectionId = 'about' | 'experience' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'story';
+export type SectionId = 'about' | 'experience' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'stage' | 'story';
 
 export const viewerProfiles: {
   id: ProfileId;
@@ -516,28 +614,28 @@ export const viewerProfiles: {
     name: 'Shubham',
     blurb: 'The full series, in order',
     color: '#e5132b',
-    order: ['about', 'originals', 'experience', 'skills', 'moments', 'journey', 'picks', 'story'],
+    order: ['about', 'originals', 'experience', 'skills', 'moments', 'stage', 'journey', 'picks', 'story'],
   },
   {
     id: 'recruiter',
     name: 'Recruiter',
     blurb: 'Experience, resume & skills first',
     color: '#4cc9ff',
-    order: ['experience', 'story', 'skills', 'originals', 'moments', 'about', 'journey', 'picks'],
+    order: ['experience', 'story', 'skills', 'originals', 'moments', 'stage', 'about', 'journey', 'picks'],
   },
   {
     id: 'developer',
     name: 'Developer',
     blurb: 'Projects, stack & GitHub first',
     color: '#46e3a8',
-    order: ['originals', 'skills', 'experience', 'about', 'moments', 'journey', 'picks', 'story'],
+    order: ['originals', 'skills', 'experience', 'about', 'moments', 'stage', 'journey', 'picks', 'story'],
   },
   {
     id: 'creative',
     name: 'Creative',
     blurb: 'The story arc & highlights first',
     color: '#ffb547',
-    order: ['journey', 'picks', 'originals', 'moments', 'about', 'experience', 'skills', 'story'],
+    order: ['journey', 'stage', 'picks', 'originals', 'moments', 'about', 'experience', 'skills', 'story'],
   },
 ];
 
@@ -549,5 +647,6 @@ export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: s
   picks: { nav: 'Top Picks', card: 'Top Picks', meta: 'Top 10', palette: jade },
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Categories`, palette: ocean },
   moments: { nav: 'Moments', card: 'Achievements', meta: `${achievements.length} Moments`, palette: crimson },
+  stage: { nav: 'Stage', card: 'National Stage', meta: `${stageMoments.length} Stills • 2026`, palette: amber },
   story: { nav: 'Resume', card: 'The Full Story', meta: 'Resume • View & download', palette: violet },
 };

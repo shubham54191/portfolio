@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "images": "node scripts/build-images.mjs"
+    "images": "node scripts/build-images.mjs",
+    "stage-photos": "node scripts/build-stage-photos.mjs"
   },
   "dependencies": {
     "framer-motion": "11.18.2",
