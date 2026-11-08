@@ -4,6 +4,7 @@ import { profile } from '../data/portfolio';
 import { useSmoothScroll } from '../hooks/smoothScroll';
 import { EASE, Magnetic, Particles } from './fx';
 import { SeriesMark } from './Poster';
+import { composeLinks, copyText } from '../lib/contact';
 import { CheckIcon, CopyIcon, GitHubIcon, LinkedInIcon, MailIcon, XIcon } from './icons';
 
 export default function FinalCTA({ onReplay, onToast }: { onReplay: () => void; onToast?: (msg: string) => void }) {
@@ -15,33 +16,16 @@ export default function FinalCTA({ onReplay, onToast }: { onReplay: () => void; 
   const opacity = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
   const [copied, setCopied] = useState(false);
 
+  const compose = composeLinks(profile.email);
+
   const copyEmail = async () => {
-    let ok = false;
-    try {
-      await navigator.clipboard.writeText(profile.email);
-      ok = true;
-    } catch {
-      // Fallback for browsers / frames without the async clipboard API
-      try {
-        const ta = document.createElement('textarea');
-        ta.value = profile.email;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        ok = document.execCommand('copy');
-        ta.remove();
-      } catch {
-        ok = false;
-      }
-    }
-    if (ok) {
+    if (await copyText(profile.email)) {
       setCopied(true);
       onToast?.(`Copied ${profile.email}`);
       window.setTimeout(() => setCopied(false), 2200);
     } else {
-      window.location.href = `mailto:${profile.email}`;
+      // copying is blocked here — open a Gmail draft instead, which works without a mail app
+      window.open(compose[0].href, '_blank', 'noopener');
     }
   };
 
@@ -49,7 +33,6 @@ export default function FinalCTA({ onReplay, onToast }: { onReplay: () => void; 
     { label: 'LinkedIn', href: profile.links.linkedin, icon: <LinkedInIcon className="h-[18px] w-[18px]" /> },
     { label: 'GitHub', href: profile.links.github, icon: <GitHubIcon className="h-[18px] w-[18px]" /> },
     { label: 'X', href: profile.links.x, icon: <XIcon className="h-[16px] w-[16px]" /> },
-    { label: 'Email', href: `mailto:${profile.email}`, icon: <MailIcon className="h-[18px] w-[18px]" /> },
   ];
 
   return (
@@ -119,6 +102,27 @@ export default function FinalCTA({ onReplay, onToast }: { onReplay: () => void; 
         <p className="mt-3 text-[12px] font-semibold tracking-[0.24em] text-mist" aria-live="polite">
           {copied ? 'COPIED TO CLIPBOARD ✓' : 'CLICK TO COPY'}
         </p>
+
+        {/* write straight away — Gmail / Outlook open a draft in a new tab, no mail app needed */}
+        <div className="mt-6 flex flex-col items-center gap-3">
+          <p className="text-[12px] font-semibold tracking-[0.24em] text-mist">OR WRITE TO ME IN</p>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {compose.map((l) => (
+              <a
+                key={l.id}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="link"
+                className="glass flex min-h-11 items-center gap-2 rounded-full px-4 text-sm font-bold text-bone transition hover:border-white/40 hover:bg-white/15"
+              >
+                <MailIcon className="h-4 w-4 text-crimson-2" />
+                {l.label}
+                <span aria-hidden className="text-mist">↗</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </motion.div>
 
       {/* socials */}

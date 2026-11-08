@@ -6,6 +6,7 @@ import { useSmoothScroll } from '../hooks/smoothScroll';
 import { EASE, Magnetic, Particles } from './fx';
 import { SeriesMark } from './Poster';
 import LivePortrait from './LivePortrait';
+import EmailMenu from './EmailMenu';
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon, XIcon } from './icons';
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.25 } } };
@@ -45,7 +46,6 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
     { label: 'GitHub', href: profile.links.github, icon: <GitHubIcon /> },
     { label: 'LinkedIn', href: profile.links.linkedin, icon: <LinkedInIcon /> },
     { label: 'X', href: profile.links.x, icon: <XIcon className="h-[15px] w-[15px]" /> },
-    { label: 'Email', href: `mailto:${profile.email}`, icon: <MailIcon /> },
   ];
 
   return (
@@ -211,6 +211,13 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
               <span className="hidden sm:inline">{q.label}</span>
             </a>
           ))}
+          {/* email opens a menu: Gmail, Outlook, mail app or copy — works without a desktop mail client */}
+          <EmailMenu className="glass group flex h-10 items-center gap-2 rounded-full px-3.5 text-xs font-semibold text-mist transition hover:-translate-y-0.5 hover:border-crimson-2/60 hover:text-bone">
+            <span className="transition group-hover:text-crimson-2">
+              <MailIcon />
+            </span>
+            <span className="hidden sm:inline">Email</span>
+          </EmailMenu>
         </motion.div>
       </motion.div>
 
