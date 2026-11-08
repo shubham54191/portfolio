@@ -288,7 +288,7 @@ export const stageMoments: StageMoment[] = [
           { file: 'day1-mcd-arrival', alt: 'Innovators stepping off the bus outside the MCD Civic Centre tower', caption: 'Arriving at the MCD Civic Centre' },
           { file: 'day1-mcd', alt: 'Innovators seated in the council chamber at the MCD Civic Centre', caption: 'In the council chamber at the MCD Civic Centre' },
           { file: 'day1-mcd-briefing', alt: 'Officials at the dais of the MCD council hall during the briefing', caption: 'The briefing in the council hall' },
-          { file: 'day1-mcd-prep', alt: 'Innovators in a small-group discussion on a sofa with laptops and notes', caption: 'Small-group prep for the Chief Minister meeting' },
+          { file: 'day1-cm-prep', alt: 'Explaining an idea to a small group of innovators seated on a sofa with laptops', caption: 'Explaining our idea while preparing for the Chief Minister meeting' },
           { file: 'day1-mcd-group', alt: 'Group photo of the innovators in the MCD council hall', caption: 'Group photo at the MCD Civic Centre' },
         ],
       },
