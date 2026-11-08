@@ -86,11 +86,12 @@ export const experience: Experience[] = [
   // in the order joined (oldest first). Both internships are ongoing — a period with "Present" shows as CURRENT.
   {
     company: 'Hansa AI / Hamaraneta',
-    role: 'Software Development Intern',
+    role: 'Software Developer Intern',
     place: 'India',
     period: 'Internship · Present', // TODO: add the start month, e.g. "Aug 2025 – Present"
     stack: ['Python', 'Node.js', 'REST APIs', 'Chatbots', 'Data Pipelines'],
     points: [
+      'Work as a software developer on the Hamaraneta platform, building and shipping product features.',
       'Engineering research to evaluate approaches and tools before they went into the product.',
       'Integrated a chatbot into the platform, connecting conversational flows to backend APIs.',
       'Built data collection pipelines that gathered and structured data for downstream use.',
@@ -528,10 +529,18 @@ export const seasons: Season[] = [
     number: 3,
     title: 'The Intern',
     period: 'Hansa AI / Hamaraneta',
-    synopsis: 'Software Development Intern — research, chatbots and data pipelines.',
+    synopsis: 'Software Developer Intern — building the Hamaraneta platform, chatbots and data pipelines.',
     episodes: [
       {
         code: 'S03 E01',
+        title: 'The Developer',
+        description: 'Software development on the Hamaraneta platform: building and shipping product features.',
+        tags: ['Software Development', 'Hamaraneta'],
+        runtime: 'Now',
+        palette: crimson,
+      },
+      {
+        code: 'S03 E02',
         title: 'The Researcher',
         description: 'Engineering research to pick the right approaches and tools.',
         tags: ['Research'],
@@ -539,7 +548,7 @@ export const seasons: Season[] = [
         palette: ocean,
       },
       {
-        code: 'S03 E02',
+        code: 'S03 E03',
         title: 'The Integrator',
         description: 'Chatbot integration and data collection pipelines.',
         tags: ['Chatbot', 'Data Pipelines', 'APIs'],
@@ -595,7 +604,7 @@ export type TopPick = { label: string; title: string; detail: string; palette: P
 export const topPicks: TopPick[] = [
   { label: 'Core focus', title: 'Agentic AI', detail: 'Autonomous agents with function calling', palette: crimson },
   { label: 'Biggest win', title: 'DRDO Hackathon', detail: 'Winner — DRDO co-partnered hackathon', palette: amber },
-  { label: 'Now interning', title: 'Hansa AI', detail: 'Software Development Intern', palette: ocean },
+  { label: 'Now interning', title: 'Hansa AI', detail: 'Software Developer Intern', palette: ocean },
   { label: 'Primary language', title: 'Python', detail: 'with TypeScript for the web', palette: violet },
   { label: 'Vector stack', title: 'pgvector', detail: 'Semantic search inside PostgreSQL', palette: jade },
   { label: 'Backend pick', title: 'FastAPI', detail: 'plus Node.js & Express', palette: amber },
@@ -617,7 +626,7 @@ export const introSlides: IntroSlide[] = [
   {
     kicker: 'Now',
     title: 'Hansa AI / Hamaraneta',
-    lines: ['Software Development Intern', 'Engineering research · chatbot integration · data pipelines'],
+    lines: ['Software Developer Intern', 'Product development · chatbot integration · data pipelines'],
   },
   {
     kicker: 'Also now',
