@@ -258,7 +258,7 @@ export type StageMoment = {
 const GROUP_PHOTO: StagePhoto = {
   file: 'delhi-next-group',
   alt: 'Group photo of the Delhi Next student innovators at the Delhi Secretariat, in front of the Delhi Next screen',
-  caption: 'Group photo at the Delhi Secretariat',
+  caption: 'Group photo with Chief Minister Rekha Gupta, Delhi Secretariat',
   focus: '50% 60%',
 };
 
@@ -270,7 +270,7 @@ export const stageMoments: StageMoment[] = [
     date: '1–4 July 2026',
     tag: 'Chief Minister meeting',
     caption:
-      'Three days in the capital with fellow student innovators: idea presentations and project demos, a direct interaction with Delhi Chief Minister Rekha Gupta at the Delhi Secretariat, and the inaugural DelhiTech Trails tour.',
+      'Three days in the capital with fellow student innovators: idea presentations and project demos, showcasing our project Trinetra to Delhi Chief Minister Rekha Gupta at the Delhi Secretariat, and the inaugural DelhiTech Trails tour.',
     featured: true,
     cover: GROUP_PHOTO,
     days: [
@@ -299,8 +299,23 @@ export const stageMoments: StageMoment[] = [
         date: 'Thu, 2 July',
         title: 'Chief Minister meeting',
         caption:
-          'At the Delhi Secretariat: a direct interaction between the innovators and Delhi Chief Minister Rekha Gupta, with government secretaries and senior officers in the room.',
-        photos: [GROUP_PHOTO],
+          'In the Auditorium, Delhi Secretariat: a direct interaction between the innovators and Delhi Chief Minister Rekha Gupta, with government secretaries and senior officers in the room. Our team showcased Trinetra, our electoral intelligence engine, on the big screen.',
+        photos: [
+          { file: 'day2-trinetra', alt: 'Trinetra on the big screen of the Delhi Secretariat auditorium while a team member presents from the podium to the officials at the dais', caption: 'Showcasing Trinetra in the Auditorium, Delhi Secretariat' },
+          { file: 'day2-cm-dais', alt: 'Delhi Chief Minister Rekha Gupta seated at the dais behind the Chief Minister nameplate', caption: 'Chief Minister Rekha Gupta at the dais' },
+          { file: 'day2-welcome', alt: 'Delhi Next standee: 2 July 2026, Auditorium, Delhi Secretariat', caption: 'Welcome to Delhi Next — 2 July 2026' },
+          { file: 'day2-stage', alt: 'The Delhi Next screen above the empty dais before the session', caption: 'The stage set before the session' },
+          { file: 'day2-before', alt: 'Two innovators seated at the auditorium table with a laptop and microphone', caption: 'Settling in before the session' },
+          { file: 'day2-vande-mataram', alt: 'Everyone in the auditorium standing for Vande Mataram', caption: 'Standing for Vande Mataram' },
+          { file: 'day2-opening', alt: 'The full auditorium facing the dais and the big screen as the session opens', caption: 'The session opens' },
+          { file: 'day2-address', alt: 'An officer delivering the opening address from the podium, the Chief Minister at the dais', caption: 'The opening address' },
+          { file: 'day2-cm-address', alt: 'Chief Minister Rekha Gupta addressing the innovators from the podium', caption: 'Chief Minister Rekha Gupta addressing the innovators' },
+          { file: 'day2-auditorium', alt: 'Innovators seated with laptops in the Delhi Secretariat auditorium', caption: 'Innovators in the auditorium' },
+          GROUP_PHOTO,
+          { file: 'day2-selfie', alt: 'A selfie of the innovators with Chief Minister Rekha Gupta in front of the Delhi Next screen', caption: 'A selfie with Chief Minister Rekha Gupta' },
+          { file: 'day2-corridor', alt: 'The innovators gathered in a corridor of the Delhi Secretariat', caption: 'In the Secretariat corridors' },
+          { file: 'day2-dusk', alt: 'The Delhi Secretariat building at dusk', caption: 'The Delhi Secretariat at dusk' },
+        ],
       },
       {
         label: 'Day 3',
@@ -501,7 +516,7 @@ export const seasons: Season[] = [
       {
         code: 'S02 E04',
         title: 'Delhi Next',
-        description: "Delhi Next's Delhi 2.0 Summer Camp — three days in the capital with fellow student innovators, including a direct interaction with Delhi's Chief Minister at the Delhi Secretariat.",
+        description: "Delhi Next's Delhi 2.0 Summer Camp — three days in the capital with fellow student innovators, including showcasing our project Trinetra to Delhi's Chief Minister at the Delhi Secretariat.",
         tags: ['Delhi Next', 'Civic Tech', 'Chief Minister'],
         runtime: 'July 2026',
         palette: ocean,
