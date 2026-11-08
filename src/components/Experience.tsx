@@ -38,7 +38,7 @@ export default function Experience() {
                 transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
               >
                 <span className="h-2.5 w-2.5 rounded-full" style={{ background: x.palette.accent, boxShadow: `0 0 16px ${x.palette.accent}` }} />
-                {i === 0 && <span className="absolute inset-0 animate-ping rounded-full opacity-40" style={{ background: x.palette.accent }} />}
+                {/present/i.test(x.period) && <span className="absolute inset-0 animate-ping rounded-full opacity-40" style={{ background: x.palette.accent }} />}
               </motion.span>
 
               {/* period column */}
@@ -52,7 +52,7 @@ export default function Experience() {
                 <p className="font-display text-2xl leading-none tracking-wide" style={{ color: x.palette.accent }}>
                   {x.period}
                 </p>
-                <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.24em] text-smoke">{`S0${experience.length - i} · ${x.place}`}</p>
+                <p className="mt-1 text-[12px] font-semibold uppercase tracking-[0.24em] text-smoke">{`S0${i + 1} · ${x.place}`}</p>
               </motion.div>
 
               {/* card */}
@@ -69,7 +69,7 @@ export default function Experience() {
                     <div className="relative p-6 sm:p-8">
                       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                         <h3 className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[0.9] tracking-wide text-bone">{x.company}</h3>
-                        {i === 0 && (
+                        {/present/i.test(x.period) && (
                           <span className="rounded-full bg-crimson px-2.5 py-0.5 text-[11px] font-bold tracking-[0.18em] text-white">CURRENT</span>
                         )}
                       </div>

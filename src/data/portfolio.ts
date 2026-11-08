@@ -28,7 +28,7 @@ export const profile = {
     'A Computer Science engineer (B.Tech) who builds AI systems that act — autonomous agents with function calling — and the full-stack products around them, with Python, TypeScript, React, Node.js, FastAPI and PostgreSQL + pgvector.',
   about: [
     'I come from a Computer Science background — my B.Tech is where I fell for two things at once: AI systems and full-stack development.',
-    'Today I work as an AI-Native Engineer, designing agentic workflows where models plan, call tools and get real work done, and wrapping them in production-grade web apps.',
+    'Right now I intern at two places — Hansa AI / Hamaraneta and SentrovaSolutions — designing agentic workflows where models plan, call tools and get real work done, and wrapping them in production-grade web apps.',
     'I like short loops: sketch the idea, ship the first version fast, then harden it for production.',
   ],
   highlights: [
@@ -83,24 +83,12 @@ const violet: Palette = { from: '#120822', via: '#3d1a6e', to: '#07060c', accent
 const jade: Palette = { from: '#03150f', via: '#0d5a40', to: '#050a08', accent: '#46e3a8' };
 
 export const experience: Experience[] = [
-  {
-    company: 'SentrovaSolutions',
-    role: 'AI-Native Engineer',
-    place: 'India',
-    period: 'Present', // TODO: e.g. "Jan 2026 – Present"
-    stack: ['Python', 'TypeScript', 'React', 'Next.js', 'Node.js', 'FastAPI', 'PostgreSQL', 'pgvector'],
-    points: [
-      'Design and build agentic AI workflows — tool-using agents that plan, call functions and complete multi-step tasks end to end.',
-      'Full-stack development across React / Next.js frontends and Node.js / FastAPI services backed by PostgreSQL and pgvector.',
-      'Ship production-grade solutions: from prototype to deployed, monitored releases.',
-    ],
-    palette: crimson,
-  },
+  // in the order joined (oldest first). Both internships are ongoing — a period with "Present" shows as CURRENT.
   {
     company: 'Hansa AI / Hamaraneta',
     role: 'Software Development Intern',
     place: 'India',
-    period: 'Internship', // TODO: e.g. "May 2025 – Aug 2025"
+    period: 'Internship · Present', // TODO: add the start month, e.g. "Aug 2025 – Present"
     stack: ['Python', 'Node.js', 'REST APIs', 'Chatbots', 'Data Pipelines'],
     points: [
       'Engineering research to evaluate approaches and tools before they went into the product.',
@@ -108,6 +96,19 @@ export const experience: Experience[] = [
       'Built data collection pipelines that gathered and structured data for downstream use.',
     ],
     palette: ocean,
+  },
+  {
+    company: 'SentrovaSolutions',
+    role: 'AI-Native Engineering Intern',
+    place: 'India',
+    period: 'Internship · Present', // TODO: add the start month, e.g. "Jan 2026 – Present"
+    stack: ['Python', 'TypeScript', 'React', 'Next.js', 'Node.js', 'FastAPI', 'PostgreSQL', 'pgvector'],
+    points: [
+      'Design and build agentic AI workflows — tool-using agents that plan, call functions and complete multi-step tasks end to end.',
+      'Full-stack development across React / Next.js frontends and Node.js / FastAPI services backed by PostgreSQL and pgvector.',
+      'Ship production-grade solutions: from prototype to deployed, monitored releases.',
+    ],
+    palette: crimson,
   },
 ];
 
@@ -534,7 +535,7 @@ export const seasons: Season[] = [
         title: 'The Researcher',
         description: 'Engineering research to pick the right approaches and tools.',
         tags: ['Research'],
-        runtime: 'Internship',
+        runtime: 'Now',
         palette: ocean,
       },
       {
@@ -542,7 +543,7 @@ export const seasons: Season[] = [
         title: 'The Integrator',
         description: 'Chatbot integration and data collection pipelines.',
         tags: ['Chatbot', 'Data Pipelines', 'APIs'],
-        runtime: 'Internship',
+        runtime: 'Now',
         palette: violet,
       },
     ],
@@ -551,7 +552,7 @@ export const seasons: Season[] = [
     number: 4,
     title: 'AI-Native',
     period: 'SentrovaSolutions',
-    synopsis: 'AI-Native Engineer — agentic workflows and production-grade full-stack systems.',
+    synopsis: 'AI-Native Engineering Intern — agentic workflows and production-grade full-stack systems.',
     episodes: [
       {
         code: 'S04 E01',
@@ -594,12 +595,12 @@ export type TopPick = { label: string; title: string; detail: string; palette: P
 export const topPicks: TopPick[] = [
   { label: 'Core focus', title: 'Agentic AI', detail: 'Autonomous agents with function calling', palette: crimson },
   { label: 'Biggest win', title: 'DRDO Hackathon', detail: 'Winner — DRDO co-partnered hackathon', palette: amber },
-  { label: 'Current role', title: 'Sentrova', detail: 'AI-Native Engineer', palette: ocean },
+  { label: 'Now interning', title: 'Hansa AI', detail: 'Software Development Intern', palette: ocean },
   { label: 'Primary language', title: 'Python', detail: 'with TypeScript for the web', palette: violet },
   { label: 'Vector stack', title: 'pgvector', detail: 'Semantic search inside PostgreSQL', palette: jade },
   { label: 'Backend pick', title: 'FastAPI', detail: 'plus Node.js & Express', palette: amber },
   { label: 'Frontend pick', title: 'Next.js', detail: 'React • Tailwind CSS', palette: crimson },
-  { label: 'The intern arc', title: 'Hansa AI', detail: 'Chatbots & data pipelines', palette: ocean },
+  { label: 'Also interning', title: 'Sentrova', detail: 'AI-Native Engineering Intern', palette: ocean },
   { label: 'Biggest stage', title: 'Bharat Mandapam', detail: 'India Innovates 2026 national finals', palette: violet },
   { label: 'Now open to', title: 'New Roles', detail: 'Engineering • Research • Freelance', palette: jade },
 ];
@@ -615,13 +616,13 @@ export const introSlides: IntroSlide[] = [
   },
   {
     kicker: 'Now',
-    title: 'SentrovaSolutions',
-    lines: ['AI-Native Engineer', 'Agentic AI workflows · full-stack · production-grade shipping'],
-  },
-  {
-    kicker: 'Before',
     title: 'Hansa AI / Hamaraneta',
     lines: ['Software Development Intern', 'Engineering research · chatbot integration · data pipelines'],
+  },
+  {
+    kicker: 'Also now',
+    title: 'SentrovaSolutions',
+    lines: ['AI-Native Engineering Intern', 'Agentic AI workflows · full-stack · production-grade shipping'],
   },
   {
     kicker: 'Originals',
