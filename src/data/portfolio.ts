@@ -275,7 +275,7 @@ export const stageMoments: StageMoment[] = [
       {
         label: 'Day 1',
         date: 'Wed, 1 July',
-        title: 'Keynote & demos',
+        title: 'Keynote, demos & briefing',
         caption:
           "Opened with Shri Vishnu Mittal's session on civic tech — how UPI, Jan Dhan and Aadhaar changed millions of lives — followed by introductions, idea presentations and project demos. Then on to the MCD Civic Centre for the briefing ahead of the Chief Minister meeting.",
         photos: [
@@ -284,7 +284,12 @@ export const stageMoments: StageMoment[] = [
           { file: 'day1-presentations', alt: 'Innovators watching a project presentation on the screens of a long conference hall', caption: 'Idea presentations on the big screen' },
           { file: 'day1-demo', alt: 'A project dashboard demoed on a large wall screen', caption: 'Project demo' },
           { file: 'day1-team', alt: 'Four team members standing in front of their project on a large screen', caption: 'The team after the demo' },
-          { file: 'day1-mcd', alt: 'Innovators seated in the council chamber at the MCD Civic Centre', caption: 'At the MCD Civic Centre for the briefing' },
+          { file: 'day1-bus', alt: 'Student innovators seated in a bus, smiling at the camera', caption: 'On the bus with fellow innovators' },
+          { file: 'day1-mcd-arrival', alt: 'Innovators stepping off the bus outside the MCD Civic Centre tower', caption: 'Arriving at the MCD Civic Centre' },
+          { file: 'day1-mcd', alt: 'Innovators seated in the council chamber at the MCD Civic Centre', caption: 'In the council chamber at the MCD Civic Centre' },
+          { file: 'day1-mcd-briefing', alt: 'Officials at the dais of the MCD council hall during the briefing', caption: 'The briefing in the council hall' },
+          { file: 'day1-mcd-prep', alt: 'Innovators in a small-group discussion on a sofa with laptops and notes', caption: 'Small-group prep for the Chief Minister meeting' },
+          { file: 'day1-mcd-group', alt: 'Group photo of the innovators in the MCD council hall', caption: 'Group photo at the MCD Civic Centre' },
         ],
       },
       {
