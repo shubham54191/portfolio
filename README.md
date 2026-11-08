@@ -42,7 +42,7 @@ The hero photo is not a video. It is **170 pre-rendered frames** of one photo â€
 
 ![On the National Stage â€” Delhi Next group photo with a day-by-day album](docs/screenshots/stage.jpg)
 
-Event photos as episode stills: Delhi Next (Delhi 2.0 Summer Camp and the Chief Minister meeting),
+Event photos as episode stills: Delhi Next (Delhi 2.0 Summer Camp, the Chief Minister meeting and the DelhiTech Trails tour),
 India Innovates 2026 at Bharat Mandapam, and the Chakravyuh National Hackathon. A multi-day event opens
 as a day-by-day album; a day without a photo shows a title card instead of an empty frame.
 
@@ -112,7 +112,8 @@ component reads from it.
 - **Resume:** replace `public/assets/Shubham_Mohapatra_Resume.pdf`.
 - **Static portrait:** replace `pic.png` (a transparent PNG), then run `npm run images`.
 - **Event photos:** put originals in `photos/stage/`, run `npm run stage-photos`, then list them in
-  `stageMoments` by file name (as a cover, or under a day).
+  `stageMoments` by file name (as a cover, or under a day). A short muted clip can sit in an album
+  too: save `public/assets/stage/<name>.webm` and `.mp4`, use a frame as the photo, and set `video: '<name>'`.
 - **Live portrait frames:** see [`scripts/live-portrait/README.md`](scripts/live-portrait/README.md).
 
 ## Project structure

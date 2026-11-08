@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { stageMoments, type StageDay, type StageMoment, type StagePhoto } from '../data/portfolio';
 import { useScrollLock } from '../hooks/smoothScroll';
 import { EASE, SectionHeading } from './fx';
@@ -86,20 +86,46 @@ function TitleCard({ word, note, className = '' }: Fallback & { className?: stri
   );
 }
 
+/** a short muted clip that loops in the album; with reduced motion it waits for the viewer to press play */
+function Clip({ photo, className = '' }: { photo: StagePhoto & { video: string }; className?: string }) {
+  const still = useReducedMotion();
+  return (
+    <video
+      key={photo.video}
+      poster={src(photo.file, 1600, 'webp')}
+      aria-label={photo.alt}
+      className={`object-contain ${className}`}
+      muted
+      loop
+      playsInline
+      autoPlay={!still}
+      controls={!!still}
+      preload="metadata"
+    >
+      <source src={`/assets/stage/${photo.video}.webm`} type="video/webm" />
+      <source src={`/assets/stage/${photo.video}.mp4`} type="video/mp4" />
+    </video>
+  );
+}
+
 function Photo({
   photo,
   sizes,
   fit = 'cover',
   className = '',
   fallback,
+  playVideo = false,
 }: {
   photo?: StagePhoto;
   sizes: string;
   fit?: 'cover' | 'contain';
   className?: string;
   fallback: Fallback;
+  /** in the album, a photo with a clip plays the clip instead */
+  playVideo?: boolean;
 }) {
   if (!photo) return <TitleCard {...fallback} className={className} />;
+  if (playVideo && photo.video) return <Clip photo={{ ...photo, video: photo.video }} className={className} />;
   return (
     <picture>
       <source type="image/avif" srcSet={`${src(photo.file, 800, 'avif')} 800w, ${src(photo.file, 1600, 'avif')} 1600w`} sizes={sizes} />
@@ -270,6 +296,7 @@ function Lightbox({ slides, index, onIndex, onClose }: { slides: Slide[]; index:
               photo={slide.photo}
               sizes="100vw"
               fit="contain"
+              playVideo
               className="h-full w-full"
               fallback={day ? { word: day.label, note: day.date } : { word: m.date, note: m.venue }}
             />
@@ -290,7 +317,11 @@ function Lightbox({ slides, index, onIndex, onClose }: { slides: Slide[]; index:
       <div className="gutter shrink-0 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 text-center" onClick={(e) => e.stopPropagation()}>
         {slide.photo?.caption && (
           <p className="mb-3 flex items-center justify-center gap-2 text-sm font-semibold text-bone">
-            <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-crimson-2" />
+            {slide.photo.video ? (
+              <span className="rounded bg-crimson px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white">Clip</span>
+            ) : (
+              <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-crimson-2" />
+            )}
             {slide.photo.caption}
           </p>
         )}

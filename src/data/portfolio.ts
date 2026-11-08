@@ -235,6 +235,8 @@ export type StagePhoto = {
   alt: string;
   /** one line shown under the photo in the album */
   caption?: string;
+  /** a short muted clip at /assets/stage/<video>.{webm,mp4} that plays in the album; `file` is its poster frame */
+  video?: string;
   /** CSS object-position, keeps faces in frame */
   focus?: string;
 };
@@ -305,7 +307,16 @@ export const stageMoments: StageMoment[] = [
         date: 'Fri, 3 July',
         title: 'DelhiTech Trails',
         caption:
-          "The inaugural DelhiTech Trails double-decker tour, hosted by Delhi's Tourism Minister, with 60 student innovators on board — Delhi Haat, Rashtrapati Bhavan, the National Museum, Pradhanmantri Sangrahalaya, the War Memorial and India Gate.",
+          'The inaugural DelhiTech Trails double-decker tour, hosted by Delhi Tourism Minister Kapil Mishra, with 60 student innovators on board: a conversation with the minister, a ride past Raisina Hill and Rashtrapati Bhavan, the National Museum, then Pradhanmantri Sangrahalaya, the War Memorial and India Gate.',
+        photos: [
+          { file: 'day3-totes', alt: 'Delhi Tourism "Dekho Meri Delhi" tote bags printed with Delhi landmarks', caption: 'Dekho Meri Delhi: the tour kit from Delhi Tourism' },
+          { file: 'day3-kapil-mishra', alt: 'Innovators in white caps gathered with Delhi Tourism Minister Kapil Mishra in front of the Delhi Tourism double-decker bus', caption: 'In conversation with Delhi Tourism Minister Kapil Mishra' },
+          { file: 'day3-memento', alt: 'Kapil Mishra presenting an India Innovates 2026 memento beside a car', caption: 'Kapil Mishra presenting an India Innovates 2026 memento' },
+          { file: 'day3-raisina-drive', video: 'day3-raisina-drive', alt: 'View from the bus driving along Raisina Hill between North Block and South Block', caption: 'From the bus: rolling past Raisina Hill' },
+          { file: 'day3-raisina', alt: 'Group photo of the innovators on Raisina Hill with North Block, South Block and Rashtrapati Bhavan behind', caption: 'Raisina Hill, with Rashtrapati Bhavan behind us' },
+          { file: 'day3-museum', alt: 'Group photo of the innovators outside the National Museum entrance', caption: 'At the National Museum' },
+          { file: 'day3-museum-steps', alt: 'The innovators seated on the steps of the National Museum', caption: 'On the National Museum steps' },
+        ],
       },
     ],
   },
