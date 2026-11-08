@@ -3,10 +3,10 @@
  * Update it here and the whole site follows.
  *
  * ⚠️ BEFORE PUBLISHING — fill in the TODOs below:
- *   1. profile.links  → your real LinkedIn / X URLs (GitHub is set)
- *   2. projects       → swap in your real projects, repo links and live-demo links
- *   3. experience     → real dates and numbers (users, latency, accuracy …) for each bullet
- *   4. public/assets/Shubham_Mohapatra_Resume.pdf → replace with your real resume
+ *   1. projects       → swap in your real projects, repo links and live-demo links
+ *                       (a project's GitHub / Live Demo button only shows once its link is set)
+ *   2. experience     → real dates and numbers (users, latency, accuracy …) for each bullet
+ *   3. public/assets/Shubham_Mohapatra_Resume.pdf → replace with your real resume
  */
 
 export type Palette = { from: string; via: string; to: string; accent: string };
@@ -38,12 +38,11 @@ export const profile = {
   ],
   availability: 'Open to exciting engineering roles, research collaborations, and freelance projects.',
   location: 'India',
-  email: 'mohaptrashubham48@gmail.com',
+  email: 'mohapatrashubham48@gmail.com',
   links: {
-    // TODO: replace LinkedIn and X with real profile URLs
-    linkedin: 'https://www.linkedin.com/in/your-handle/',
+    linkedin: 'https://www.linkedin.com/in/shubham-mohapatra-a16b43369/',
     github: 'https://github.com/shubham54191',
-    x: 'https://x.com/your-handle',
+    x: 'https://x.com/SAstrax42006',
   },
   githubLabel: 'github.com/shubham54191',
   resumePdf: '/assets/Shubham_Mohapatra_Resume.pdf',
@@ -152,7 +151,6 @@ export const projects: Project[] = [
     ],
     features: ['Autonomous multi-step execution', 'Schema-validated tool calls', 'Resumable, logged runs', 'Live run timeline in the UI'],
     metrics: [],
-    github: 'https://github.com/your-username/agentic-workflow-engine',
     palette: crimson,
     motif: 'agent',
   },
@@ -170,7 +168,6 @@ export const projects: Project[] = [
     ],
     features: ['Image & PDF ingestion', 'Schema-validated JSON output', 'REST API for upload & results', 'Dockerised deployment'],
     metrics: [],
-    github: 'https://github.com/your-username/ocr-json-pipeline',
     palette: amber,
     motif: 'scan',
   },
@@ -188,7 +185,6 @@ export const projects: Project[] = [
     ],
     features: ['Semantic search over your docs', 'Answers with sources', 'Streaming chat UI', 'Single-database architecture'],
     metrics: [],
-    github: 'https://github.com/your-username/vector-search-assistant',
     palette: ocean,
     motif: 'vector',
   },

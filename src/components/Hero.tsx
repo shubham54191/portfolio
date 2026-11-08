@@ -6,7 +6,7 @@ import { useSmoothScroll } from '../hooks/smoothScroll';
 import { EASE, Magnetic, Particles } from './fx';
 import { SeriesMark } from './Poster';
 import LivePortrait from './LivePortrait';
-import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from './icons';
+import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon, XIcon } from './icons';
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09, delayChildren: 0.25 } } };
 const item = {
@@ -44,6 +44,7 @@ export default function Hero({ onPlay, onResume, profileId }: { onPlay: () => vo
   const quick = [
     { label: 'GitHub', href: profile.links.github, icon: <GitHubIcon /> },
     { label: 'LinkedIn', href: profile.links.linkedin, icon: <LinkedInIcon /> },
+    { label: 'X', href: profile.links.x, icon: <XIcon className="h-[15px] w-[15px]" /> },
     { label: 'Email', href: `mailto:${profile.email}`, icon: <MailIcon /> },
   ];
 
